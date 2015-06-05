@@ -614,7 +614,7 @@ typedef NS_ENUM(NSInteger, BITUpdateAlertViewTag) {
   if (!self.checkInProgress) {
     
     if (!_lastUpdateCheckFromBlockingScreen ||
-        abs([NSDate timeIntervalSinceReferenceDate] - [_lastUpdateCheckFromBlockingScreen timeIntervalSinceReferenceDate]) > 60) {
+        fabs([NSDate timeIntervalSinceReferenceDate] - [_lastUpdateCheckFromBlockingScreen timeIntervalSinceReferenceDate]) > 60) {
       _lastUpdateCheckFromBlockingScreen = [NSDate date];
       [self checkForUpdateShowFeedback:NO];
     }
