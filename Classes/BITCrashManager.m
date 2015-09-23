@@ -388,7 +388,10 @@ NSString *const kBITCrashManagerStatus = @"BITCrashManagerStatus";
   NSString *username = [self stringValueFromKeychainForKey:kBITHockeyMetaUserName] ?: @"";
   
   if (self.delegate && [self.delegate respondsToSelector:@selector(userNameForCrashManager:)]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     username = [self.delegate userNameForCrashManager:self] ?: @"";
+#pragma clang diagnostic pop
   }
   if ([BITHockeyManager sharedHockeyManager].delegate &&
       [[BITHockeyManager sharedHockeyManager].delegate respondsToSelector:@selector(userNameForHockeyManager:componentManager:)]) {
@@ -422,7 +425,10 @@ NSString *const kBITCrashManagerStatus = @"BITCrashManagerStatus";
 #endif
   
   if (self.delegate && [self.delegate respondsToSelector:@selector(userEmailForCrashManager:)]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     useremail = [self.delegate userEmailForCrashManager:self] ?: @"";
+#pragma clang diagnostic pop
   }
   if ([BITHockeyManager sharedHockeyManager].delegate &&
       [[BITHockeyManager sharedHockeyManager].delegate respondsToSelector:@selector(userEmailForHockeyManager:componentManager:)]) {
