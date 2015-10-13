@@ -957,7 +957,8 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    if (self.activeLink) {
+    NSTextCheckingResult *result = self.activeLink;
+    if (result) {
         UITouch *touch = [touches anyObject];
         if (self.activeLink == [self linkAtPoint:[touch locationInView:self]]) {
             [self setLinkActive:NO withTextCheckingResult:self.activeLink];
@@ -966,7 +967,6 @@ static inline NSAttributedString * NSAttributedStringBySettingColorFromContext(N
                 return;
             }
             
-            NSTextCheckingResult *result = self.activeLink;
             switch (result.resultType) {
                 case NSTextCheckingTypeLink:
                     if ([self.delegate respondsToSelector:@selector(attributedLabel:didSelectLinkWithURL:)]) {
